@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the buttonsss to evaluate/execute JavaScript code/expressions.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo1"></p>
+
+<p id="demo2"></p>
+
+
+<p id="demo3"></p>
+
+<p id="demo4"></p>
+
+<p id="demo5"></p>
+
+
+<p id="demo6"></p>
+
+
+<script>
+
+function checkBrackets(p1, p2)
+{
+   var a = 1;
+   var b = 2;
+   var c = 3;
+   var d = 4;
+   var abd = 5;
+   try
+   {
+        eval(p1) ;
+
+        document.getElementById(p2).innerHTML = "Statement " + p1 + " is valid";
+    }
+    catch(e)
+    {
+         document.getElementById(p2).innerHTML = "Statement " + p1 + " is invalid";
+    }
+
+}
+
+function checkBracketsNew(p1, p2)
+{
+    var lOpenCnt  = 0;
+    var lCloseCnt  = 0;
+    for (i = 0; i < p1.length; i++)
+    {
+         if(p1[i] == "(")
+            lOpenCnt++;
+         if(p1[i] == ")")
+            lCloseCnt++;
+    }
+    if(lOpenCnt  == lCloseCnt)
+    {
+        document.getElementById(p2).innerHTML = "Statement " + p1 +  " is valid";
+
+    }
+    else
+    {
+
+          document.getElementById(p2).innerHTML = "Statement " + p1 +  " is invalid";
+    }
+}
+
+function myFunction()
+{
+    checkBrackets('( ( a + b ) / 5  abd )', "demo1");
+    checkBrackets(') ( a + b ) )' , "demo2");
+    checkBrackets('( b * ( c + d *2 / ( 2 + ( 12 abc / ( a + 3 ) ) ) )' , "demo3");
+
+
+    checkBracketsNew('( ( a + b ) / 5  abd )', "demo4");
+    checkBracketsNew(') ( a + b ) )' , "demo5");
+    checkBracketsNew('( b * ( c + d *2 / ( 2 + ( 12 abc / ( a + 3 ) ) ) )' , "demo6");
+
+}
+</script>
+
+</body>
+</html>
